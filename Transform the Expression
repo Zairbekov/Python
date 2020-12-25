@@ -1,0 +1,18 @@
+n = int(input())
+def generateText(arg):
+arrayC=[]
+s = ''
+for i in arg:
+if(ord(i)==40 ):
+pass
+elif(ord(i)>=97 and ord(i)<=123):
+s=s+str(i)
+elif(ord(i)==41 ):
+if(len(arrayC)!=0):
+s=s+str(arrayC.pop())
+else:
+ arrayC.append(i)
+ return s
+ for i in range(n):
+ text=input()
+ print(generateText(text))
