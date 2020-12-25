@@ -1,0 +1,9 @@
+n = int(input())
+for i in range(n):
+    f = int(input())
+    m = 5
+    count = 0
+    while (f / m>= 1): 
+        count += int(f / m) 
+        m *= 5
+    print(int(count))
