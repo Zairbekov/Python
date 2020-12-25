@@ -1,0 +1,5 @@
+n = int(input())
+if (str(n).isnumeric() and int(n) == int(str(n)[::-1])):
+    print(True)
+else:
+    print(False)
