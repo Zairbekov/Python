@@ -1,0 +1,73 @@
+n1 = int(input())
+def allNines(nines):
+    for i in nines:
+        if i!='9':
+            return False
+    return True
+
+def allZeros(z):
+    for j in z:
+        if j!='0':
+            return False
+    return True   
+
+def generateNext(num, n): 
+    mid = int(n/2 )  
+    leftsmaller = False
+    lside = mid - 1
+    rside = mid + 1 if (n % 2) else mid   
+    while (lside >= 0 and num[lside] == num[rside]) : 
+        lside-=1
+        rside+=1
+
+    if ( lside < 0 or num[lside] < num[rside]):  
+        leftsmaller = True
+  
+    while (lside >= 0) : 
+      
+        num[rside] = num[lside]  
+        rside+=1
+        lside-=1
+       
+    if (leftsmaller == True) : 
+      
+        carry = 1
+        lside = mid - 1
+  
+        if (n%2 == 1) : 
+          
+            num[mid] += carry  
+            carry = int(num[mid] / 10 ) 
+            num[mid] %= 10
+            rside = mid + 1
+          
+        else: 
+            rside = mid  
+  
+        while (lside >= 0) : 
+          
+            num[lside] += carry  
+            carry = num[lside] / 10
+            num[lside] %= 10
+            num[rside] = num[lside]
+            rside+=1
+            lside-=1
+    return num
+
+def result(arr, n):  
+  
+    for i in range(0, n):  
+        print(int(arr[i]),end="")  
+    print()
+
+for i in range(n1):
+    inputstr = input()
+    number = list(inputstr)
+    for k in range(0, len(number)): 
+        number[k] = int(number[k]) 
+    if(allNines(inputstr)):
+        print('1'+'0'*(len(inputstr)-1)+'1')
+    elif(allZeros(inputstr)):
+        print('1'+'0'*(len(inputstr)-2)+'1')
+    else:
+        result(generateNext(number, len(number)), len(number))
