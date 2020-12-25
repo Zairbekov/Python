@@ -1,0 +1,7 @@
+n = int(input())
+for i in range(n):
+    originNumbers = input().split()
+    firstReverseNumber = int(str(originNumbers[0])[::-1])
+    secondReverseNumber = int(str(originNumbers[1])[::-1])
+    resutlNumber = firstReverseNumber+secondReverseNumber
+    print(int(str(resutlNumber)[::-1]))
